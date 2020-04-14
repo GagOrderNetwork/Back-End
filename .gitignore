@@ -1,3 +1,6 @@
 # output
 dist
 .env
+
+# Dependency directory
+node_modules
