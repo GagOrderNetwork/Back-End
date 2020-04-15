@@ -11,13 +11,37 @@ router.route("/add").post((req, res) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const email = req.body.email;
+  const password = req.body.password;
 
-  const newUser = new User({ firstName, lastName, email });
+  const newUser = new User({ firstName, lastName, email, password });
 
   newUser
     .save()
     .then(() => res.json("User added!"))
     .catch(err => res.status(400).json("Error: " + err));
+});
+
+router.route("/id").get((req, res) => {
+  User.findById(req.params.id)
+    .then(user => res.json(user))
+    .catch(err => err.status(400).json("Error: " + err));
+});
+
+router.route("/update/:id").post((req, res) => {
+  User.findById(req.params.id)
+    .then(user => {
+      user.email = req.body.email;
+      user.userName = req.body.userName;
+      user.userLink = req.body.userLink;
+      user.company = req.body.company;
+      user.password = req.body.password;
+
+      user
+        .save()
+        .then(() => res.json("User updated!"))
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => err.status(400).json("Error: " + err));
 });
 
 module.exports = router;

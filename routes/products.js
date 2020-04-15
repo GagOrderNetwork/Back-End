@@ -21,4 +21,32 @@ router.route("/add").post((req, res) => {
     .catch(err => res.status(400).json("Error: " + err));
 });
 
+router.route("/:id").get((req, res) => {
+  Product.findById(req.params.id)
+    .then(product => res.json(product))
+    .catch(err => err.status(400).json("Error: " + err));
+});
+
+router.route("/:id").delete((req, res) => {
+  Product.findByIdAndDelete(req.params.id)
+    .then(() => res.json("Excerise deleted"))
+    .catch(err => err.status(400).json("Error: " + err));
+});
+
+router.route("/update/:id").post((req, res) => {
+  Product.findById(req.params.id)
+    .then(product => {
+      product.email = req.body.email;
+      product.productName = req.body.productName;
+      product.productLink = req.body.productLink;
+      product.company = req.body.company;
+
+      product
+        .save()
+        .then(() => res.json("Product updated!"))
+        .catch(err => res.status(400).json("Error: " + err));
+    })
+    .catch(err => err.status(400).json("Error: " + err));
+});
+
 module.exports = router;
