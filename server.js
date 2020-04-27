@@ -34,6 +34,9 @@ const usersRouter = require("./routes/users");
 
 app.use("/product", productRouter);
 app.use("/users", usersRouter);
+app.get("/", (req, res) => {
+  res.send("Geaux Back End");
+});
 
 http.createServer(app).listen(port, () => {
   console.log(`HTTP listening on port: ${port}`);
