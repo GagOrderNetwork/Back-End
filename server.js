@@ -38,10 +38,10 @@ app.get("/", (req, res) => {
   res.send("Geaux Back End");
 });
 
-http.createServer(app).listen(port, () => {
-  console.log(`HTTP listening on port: ${port}`);
+app.listen(port, () => {
+  console.log(`Listening on port: ${port}`);
 });
 
-https.createServer(options, app).listen(443, () => {
-  console.log("HTTPS listening on port: 443");
-});
+// https.createServer(options, app).listen(443, () => {
+//   console.log("HTTPS listening on port: 443");
+// });
