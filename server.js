@@ -1,19 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
-const https = require("https");
-const http = require("http");
-const fs = require("fs");
 
 require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
-
-const options = {
-  key: fs.readFileSync("encryption/geaux-key.pem"),
-  cert: fs.readFileSync("encryption/geaux-cert.pem")
-};
 
 app.use(cors());
 app.use(express.json());
@@ -41,7 +33,3 @@ app.get("/", (req, res) => {
 app.listen(port, () => {
   console.log(`Listening on port: ${port}`);
 });
-
-// https.createServer(options, app).listen(443, () => {
-//   console.log("HTTPS listening on port: 443");
-// });
