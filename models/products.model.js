@@ -4,28 +4,28 @@ const Schema = mongoose.Schema;
 
 const productSchema = new Schema(
   {
-    email: {
+    userId: {
       type: String,
-      required: true
+      required: true,
     },
 
     productName: {
       type: String,
-      required: true
+      required: true,
     },
 
     productLink: {
       type: String,
-      required: true
+      required: true,
     },
 
-    company: {
+    productPrice: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   {
-    timestamps: true
+    timestamps: true,
   }
 );
 
