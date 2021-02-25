@@ -24,7 +24,7 @@ mongoose
   )
   .catch((err) => console.log(err));
 
-app.use("/product", productRouter);
+app.use("/products", productRouter);
 app.use("/users", usersRouter);
 
 app.get("/", (req, res) => {

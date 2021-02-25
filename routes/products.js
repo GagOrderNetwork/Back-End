@@ -8,16 +8,16 @@ router.route("/").get((req, res) => {
 });
 
 router.route("/add").post((req, res) => {
-  const userId = req.body.email;
-  const productName = req.body.productName;
-  const productLink = req.body.productLink;
-  const productPrice = req.body.productPrice;
+  const userId = req.body.userId;
+  const name = req.body.name;
+  const link = req.body.link;
+  const price = req.body.price;
 
   const newProduct = new Product({
-    productName,
-    productLink,
+    name,
+    link,
     userId,
-    productPrice,
+    price,
   });
 
   newProduct

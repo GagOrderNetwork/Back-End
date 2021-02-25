@@ -9,17 +9,17 @@ const productSchema = new Schema(
       required: true,
     },
 
-    productName: {
+    name: {
       type: String,
       required: true,
     },
 
-    productLink: {
+    link: {
       type: String,
       required: true,
     },
 
-    productPrice: {
+    price: {
       type: String,
       required: true,
     },
